@@ -43,7 +43,7 @@ class quickfact {
 			'hierarchical'        => false,
 			'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
 			'has_archive'         => true,
-			'rewrite'             => array( 'slug' => 'projects' ),
+			'rewrite'             => array( 'slug' => 'quickfacts' ),
 			'query_var'           => true
 		);
 

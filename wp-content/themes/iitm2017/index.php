@@ -10,39 +10,38 @@
 					<div class="nav-next-cust"></div -->
 				</div>
 				<div id="owl-gallery" class="owl-carousel owl-theme">
-					<div class="item">
-						<div class="gallery-outer">
-							<div class="gal-image">
-								<img src="wp-content/themes/iitm2017/images/test.jpg">
-							</div>
-							<div class="gal-image-text">
-								<h5>IITM Starts Tomorrow</h5>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="gallery-outer">
-							<div class="gal-image">
-								<img src="wp-content/themes/iitm2017/images/test.jpg">
-							</div>
-							<div class="gal-image-text">
-								<h5>IITM Starts Day After</h5>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="gallery-outer">
-							<div class="gal-image">
-								<img src="wp-content/themes/iitm2017/images/test.jpg">
-							</div>
-							<div class="gal-image-text">
-								<h5>IITM Started Yesterday</h5>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-							</div>
-						</div>
-					</div>
+					
+<?php
+$args = array( 'post_type' => 'iitm_slider', 'posts_per_page' => 5 );
+$loop = new WP_Query( $args );
+while ( $loop->have_posts() ) : $loop->the_post();   
+  $imageid = get_post_meta( get_the_ID(), 'slider_image', true );
+  $imageurl = wp_get_attachment_url($imageid);
+  $sliderlink = get_post_meta( get_the_ID(), 'home_slider_link', true );					
+  ?>
+  <div class="item">
+		<div class="gallery-outer">
+			<div class="gal-image">
+				<a class="slider-link" href="<?php echo $sliderlink; ?>">
+					<img src="<?php echo $imageurl; ?>">
+				</a>	
+			</div>';?>
+			<div class="gal-image-text">
+				<a class="slider-link" href="<?php echo $sliderlink; ?>"><h5><?php echo the_title(); ?></h5></a>
+				<p><?php echo the_content(); ?></p>
+			</div>
+		</div>
+	</div>
+<?php  
+endwhile;					
+?>
+
+
+					
+	
+		
+					
+					
 				</div>
 			</div>
 			<!-- END Gallery ITEMS -->
@@ -86,8 +85,17 @@
 					<div class="col s12 m12 l3">
 						<div class="main-text-home-right yellow">
 							<div id="quick-fact">Quick Fact</div>
-							<div class="quick-fact-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+							<?php
+							$args = array( 'post_type' => 'quickfact', 'orderby'=>'rand', 'posts_per_page' => 1 );
+							$loop = new WP_Query( $args );
+							while ( $loop->have_posts() ) : $loop->the_post();
+							?>
+							<div class="quick-fact-content">
+								<?php echo the_content(); ?>
 							</div>
+							<?php  
+							endwhile;					
+							?>
 						</div>
 					</div>
 				</div>
@@ -100,26 +108,33 @@
 					<div class="col s12 m12 l7">
 						<div id="owl-blog" class="owl-carousel owl-theme">
 							<!-- Items Start -->
+							<?php
+							$args = array( 'post_type' => 'post', 'posts_per_page' => 5 );
+							$loop = new WP_Query( $args );
+							while ( $loop->have_posts() ) : $loop->the_post();
+							$imageid = get_post_meta( get_the_ID(), 'featured_image', true );
+  							$imageurl = wp_get_attachment_url($imageid);
+							?>	
 							<div class="item">
-								<img src="wp-content/themes/iitm2017/images/test2.jpg">
+								<img src="<?php echo $imageurl; ?>">
 								<div class="register-sub-content">
 									<div class="col s12 m9 l9">
 										<div class="register-sub-content-text">
-											<h5>Hello</h5>
-											<p>IITM is a leading platform for the travel industry to showcase existing products and introduce new ones to audiences across the country.</p>
+											<h5><?php echo $post->post_title; ?></h5>
+											<p><?php echo $post->post_excerpt; ?></p>
 										</div>
 									</div>
 									<div class="col s12 m3 l3">
 										<div class="link-holder">
-											<a class="register-sub-content-link" href="#"> Read More</a>
+											<a class="register-sub-content-link" href="<?php echo get_permalink(); ?>"> 
+											Read More</a>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
-							<div class="item"><img src="wp-content/themes/iitm2017/images/test2.jpg"></div>
-							<div class="item"><img src="wp-content/themes/iitm2017/images/test2.jpg"></div>
+							<?php  
+							endwhile;					
+							?>
 
 							<!-- Items End-->
 						</div>
@@ -149,104 +164,68 @@
 						<div class="col s12 m12 l6">
 							<!--/ Left /-->
 
-
+							<?php
+							$args = array( 
+								'post_type' => 'eventdates', 
+								'posts_per_page' => 4,
+								'meta_key'			=> 'start_date',
+								'orderby'			=> 'meta_value',
+								'order'				=> 'ASC'
+							);
+							$loop = new WP_Query( $args );
+							while ( $loop->have_posts() ) : $loop->the_post();
+							$city = get_post_meta( get_the_ID(), 'city', true );
+							$sdt = get_post_meta( get_the_ID(), 'start_date', true );
+							$start_date = DateTime::createFromFormat('Y-m-d', $sdt);
+							$start_date_format = $start_date->format('d');
+							$edt = get_post_meta( get_the_ID(), 'end_date', true );
+							$end_date = DateTime::createFromFormat('Y-m-d', $edt);
+							$end_date_format = $end_date->format('d F Y');
+							$imageid = get_post_meta( get_the_ID(), 'city_image', true );
+  							$imageurl = wp_get_attachment_url($imageid);
+							$today = date("Y-m-d");
+							
+							if($today > $start_date){
+								$html='
+								<div class="col s12 m3 l3 no-padding">
+									<a class="date-item-booking-open" href="#">Booking Closed</a>
+									<a class="date-item-exhibit" href="#">View Report</a>
+								</div>
+								';
+							} else{
+								$html='
+								<div class="col s12 m3 l3 no-padding">
+									<a class="date-item-booking-open" href="#">Booking Open</a>
+									<a class="date-item-exhibit" href="#">Exhibit</a>
+								</div>
+								';
+							}
+							
+							
+							?>	
 							<!--/ Item /-->
 							<div class="date-item">
 								<div class="row no-margin">
 									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
+										<img src="<?php echo $imageurl; ?>"></div>
 									<div class="col s12 m6 l6">
 										<div class="date-item-city-name">
-											IITM Bangalore
+											IITM <?php echo $city; ?>
 										</div>
 										<div class="date-item-city-date">
-											22-24 February 2016
+											<?php echo $start_date_format; ?> - <?php echo $end_date_format; ?>
 										</div>
 										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
+											<?php echo the_content(); ?>
 										</div>
 									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
+									<?php echo $html; ?>
 								</div>
 							</div>
 							<!--/ End Item /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
-
+							<?php  
+							endwhile;					
+							?>
 
 						</div>
 						<!--/ END Left /-->

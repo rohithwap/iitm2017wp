@@ -31,7 +31,7 @@
 			singleItem: false,
 			slideSpeed: 300,
 			pagination: false,
-			//autoPlay: 1000,
+			autoPlay: 1000,
 			transitionStyle: "fade",
 			navigation: false, // Show next and prev buttons
 			items: 6,
@@ -51,7 +51,7 @@
 			singleItem: true,
 			slideSpeed: 300,
 			pagination: false,
-			//autoPlay: 5000,
+			autoPlay: 5000,
 			transitionStyle: "fade",
 			navigation: true, // Show next and prev buttons
 			navigationText: ["<img src='wp-content/themes/iitm2017/images/left.png'>", "<img src='wp-content/themes/iitm2017/images/right.png'>"],
@@ -63,7 +63,7 @@
 			slideSpeed: 300,
 			navigation: false,
 			pagination: false,
-			//autoPlay: 5000
+			autoPlay: 5000
 		});
 		$("#owl-gallery").owlCarousel({
 			navigation: true, // Show next and prev buttons
@@ -71,7 +71,7 @@
 			paginationSpeed: 400,
 			singleItem: true,
 			transitionStyle: "fade",
-			//autoPlay: 3000,
+			autoPlay: 3000,
 			pagination: false,
 			navigationText: ["<img src='wp-content/themes/iitm2017/images/left.png'>", "<img src='wp-content/themes/iitm2017/images/right.png'>"],
 			mouseDrag: false,
@@ -91,7 +91,7 @@
 			slideSpeed: 300,
 			navigation: true,
 			pagination: false,
-			//autoPlay: 1000
+			autoPlay: 1000,
 			navigationText: ["<img class='blog-nav' src='wp-content/themes/iitm2017/images/left.png'>", "<img class='blog-nav' src='wp-content/themes/iitm2017/images/right.png'>"]
 		});
 
