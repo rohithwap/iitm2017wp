@@ -400,13 +400,13 @@ nav {
 }
 
 #dates {
-	min-height: 80vh;
+	min-height: 100vh;
 	position: relative;
 	overflow: hidden;
 }
 
 .city-image {
-	min-height: 80vh;
+	min-height: 100vh;
 	background-size: cover !important;
 }
 
@@ -528,9 +528,20 @@ nav {
 	min-height: 14vh;
 	color: #9fa3aa;
 }
-
-.date-item:hover {
-	transform: scale(1.05);
+.view-report{
+	border: 2px solid #00bef2;
+    background: none;
+    color: #00bef2;
+	font-size: 12px;   
+    padding: 10px;
+    display: block;
+    margin-top: 5%;
+    text-align: center;
+}
+.event-dates-header{
+	text-align: center;
+    font-weight: bold;
+    color: #00bef2;
 }
 
 .no-margin {

@@ -160,18 +160,20 @@ endwhile;
 				</div>
 				<div id="nav-dates-container">
 					<div class="row">
+						<h2 class="event-dates-header">Event Dates</h2>
 						<!--/ Start All  Date Items /-->
-						<div class="col s12 m12 l6">
+						<div class="col s12 m12 l12">
 							<!--/ Left /-->
 
 							<?php
 							$args = array( 
 								'post_type' => 'eventdates', 
-								'posts_per_page' => 4,
+								'posts_per_page' => 8,
 								'meta_key'			=> 'start_date',
 								'orderby'			=> 'meta_value',
 								'order'				=> 'ASC'
 							);
+							$i=1;
 							$loop = new WP_Query( $args );
 							while ( $loop->have_posts() ) : $loop->the_post();
 							$city = get_post_meta( get_the_ID(), 'city', true );
@@ -183,13 +185,14 @@ endwhile;
 							$end_date_format = $end_date->format('d F Y');
 							$imageid = get_post_meta( get_the_ID(), 'city_image', true );
   							$imageurl = wp_get_attachment_url($imageid);
-							$today = date("Y-m-d");
-							
-							if($today > $start_date){
+							$now = new DateTime();
+							$now->format('Y-m-d');
+							$i;							
+							if($now > $start_date){
 								$html='
 								<div class="col s12 m3 l3 no-padding">
 									<a class="date-item-booking-open" href="#">Booking Closed</a>
-									<a class="date-item-exhibit" href="#">View Report</a>
+									<a class="view-report" href="#">View Report</a>
 								</div>
 								';
 							} else{
@@ -200,8 +203,6 @@ endwhile;
 								</div>
 								';
 							}
-							
-							
 							?>	
 							<!--/ Item /-->
 							<div class="date-item">
@@ -222,112 +223,13 @@ endwhile;
 									<?php echo $html; ?>
 								</div>
 							</div>
-							<!--/ End Item /-->
-							<?php  
-							endwhile;					
+							<!--/ End Item /-->	
+							<?php
+							endwhile;	
+							$i++;
 							?>
 
-						</div>
-						<!--/ END Left /-->
-						<div class="col s12 m12 l6">
-							<!--/ Right /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
-							<!--/ Item /-->
-							<div class="date-item">
-								<div class="row no-margin">
-									<div class="col s12 m3 l3 no-padding">
-										<img src="wp-content/themes/iitm2017/images/test4.jpg"></div>
-									<div class="col s12 m6 l6">
-										<div class="date-item-city-name">
-											IITM Bangalore
-										</div>
-										<div class="date-item-city-date">
-											22-24 February 2016
-										</div>
-										<div class="date-item-city-venue">
-											Hall C Ground Floor, EPI Centre, Apparel House, Sector 44, Near Fortis Hospital, Gurgaon 122 003
-										</div>
-									</div>
-									<div class="col s12 m3 l3 no-padding">
-										<a class="date-item-booking-open" href="#">Booking Open</a>
-										<a class="date-item-exhibit" href="#">Exhibit</a>
-									</div>
-								</div>
-							</div>
-							<!--/ End Item /-->
-
+						
 						</div>
 					</div>
 					<!--/ End All Date Items /-->
