@@ -426,6 +426,7 @@ nav {
 	right: 10%;
 	background: #FFF;
 	min-height: 65vh;
+    max-width: 35vw;
 }
 
 #dates .city-name {

@@ -17,7 +17,7 @@ $loop = new WP_Query( $args );
 while ( $loop->have_posts() ) : $loop->the_post();   
   $imageid = get_post_meta( get_the_ID(), 'slider_image', true );
   $imageurl = wp_get_attachment_url($imageid);
-  $sliderlink = get_post_meta( get_the_ID(), 'home_slider_link', true );					
+  $sliderlink = get_post_meta( get_the_ID(), 'home_slider_link', true);					
   ?>
   <div class="item">
 		<div class="gallery-outer">
@@ -238,38 +238,40 @@ endwhile;
 			<div id="dates-slider">
 				<div id="owl-dates" class="owl-carousel owl-theme">
 					<!-- #Start Items -->
-
+                    <?php
+                    $args = array( 'post_type' => 'eventdates', 'posts_per_page' => 5 );
+                    $loop = new WP_Query( $args );
+                    while ( $loop->have_posts() ) : $loop->the_post();
+                    $city = get_post_meta( get_the_ID(), 'city', true );
+                    $sdt = get_post_meta( get_the_ID(), 'start_date', true );
+                    $start_date = DateTime::createFromFormat('Y-m-d', $sdt);
+                    $start_date_format = $start_date->format('d');
+                    $edt = get_post_meta( get_the_ID(), 'end_date', true );
+                    $end_date = DateTime::createFromFormat('Y-m-d', $edt);
+                    $end_date_format = $end_date->format('d F Y');
+                    $imageid = get_post_meta( get_the_ID(), 'city_image', true );
+                    $imageurl = wp_get_attachment_url($imageid);
+                    ?>	
+                    
 					<div class="item">
-						<div class="city-image" data-bg="wp-content/themes/iitm2017/images/test3.jpg">
+						<div class="city-image" data-bg="<?php echo $imageurl; ?>">
 							<img class="date-img">
 						</div>
 						<div class="row slider-box">
 							<div class="col s12 m12 l12 yellow city-name">
-								Bangalore
+								<?php echo $city; ?>
 							</div>
 							<div class="col s12 m12 l12">
-								<div class="date-text">Date</div>
-								<div class="venue-text">Venue</div>
+								<div class="date-text"><?php echo $start_date_format; ?> - <?php echo $end_date_format; ?></div>
+								<div class="venue-text"><?php echo the_content(); ?></div>
 							</div>
 						</div>
 					</div>
-
-					<div class="item">
-						<div class="city-image" data-bg="wp-content/themes/iitm2017/images/test3.jpg">
-							<img class="date-img">
-						</div>
-						<div class="row slider-box">
-							<div class="col s12 m12 l12 yellow city-name">
-								Bangalore
-							</div>
-							<div class="col s12 m12 l12">
-								<div class="date-text">Date</div>
-								<div class="venue-text">Venue</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
+                    <?php
+                    endwhile;	
+                    $i++;
+                    ?>
+                </div>
 			</div>
 		</div>
 		<!--/ End Dates-->
@@ -285,143 +287,38 @@ endwhile;
 				<div class="reports-gallery">
 					<div id="owl-reports" class="owl-carousel owl-theme">
 						<!-- Items Start -->
+                        <?php
+                        $i=1;
+                        $args = array( 'post_type' => 'eventreports', 'posts_per_page' => 5 );
+                        $loop = new WP_Query( $args );
+                        while ( $loop->have_posts() ) : $loop->the_post();
+                        $city = get_post_meta( get_the_ID(), 'city', true );
+                        $series = get_post_meta( get_the_ID(), 'series', true );
+                        $reportpdf = get_post_meta( get_the_ID(), 'report_pdf', true );
+                        $reporturl = wp_get_attachment_url($reportpdf);
+                        ?>
 
 						<!--/ Item -->
 						<div class="item">
 							<div class="report-single-container">
-								<div class="report-number">1</div>
+								<div class="report-number"><?php echo $i; ?></div>
 								<div class="report-link">
 									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
+										<a href="<?php echo $reporturl; ?>" target="_blank"><i class="fa fa-plus"></i></a>
 									</div>
 								</div>
 								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
+									<div class="report-city"><?php echo $city; ?></div>
+									<div class="report-date"><?php echo $series; ?></div>
 								</div>
 							</div>
 						</div>
+                        <?php  
+                        $i++;
+                        endwhile;	
+                        
+                        ?>
 						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">2</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">3</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">4</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">5</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">6</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">7</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
-						<!--/ Item -->
-						<div class="item">
-							<div class="report-single-container">
-								<div class="report-number">8</div>
-								<div class="report-link">
-									<div class="report-link-inner">
-										<a href="#" target="_blank"><i class="fa fa-plus"></i></a>
-									</div>
-								</div>
-								<div class="report-info">
-									<div class="report-city">Bangalore</div>
-									<div class="report-date">2016</div>
-								</div>
-							</div>
-						</div>
-						<!--/ End Item -->
-
 					</div>
 				</div>
 			</div>
@@ -432,45 +329,22 @@ endwhile;
 			<!--/Start Partners-->
 			<div class="partner-gallery">
 				<div class="partners-heading">OUR <span>PARTNERS</span></div>
-				<div id="owl-partners" class="owl-carousel owl-theme">
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-					<div class="item">
-						<div class="logo"><img src="wp-content/themes/iitm2017/images/test5.jpg"></div>
-					</div>
-
-				</div>
+                    <div id="owl-partners" class="owl-carousel owl-theme">
+                        <?php
+                        $args = array( 'post_type' => 'partners', 'posts_per_page' => 5 );
+                        $loop = new WP_Query( $args );
+                        while ( $loop->have_posts() ) : $loop->the_post();
+                        $imageid = get_post_meta( get_the_ID(), 'partner_logo', true );
+                        $imageurl = wp_get_attachment_url($imageid);
+                        
+                        ?>
+                        <div class="item">
+                            <div class="logo"><img src="<?php echo $imageurl; ?>"></div>
+                        </div>
+                        <?php  
+                        endwhile;					
+                        ?>
+                    </div>
 			</div>
 		</div>
 <?php get_footer(); ?>
