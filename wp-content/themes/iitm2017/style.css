@@ -966,3 +966,16 @@ input[type=email] {
 #owl-blog img {
 	width: 100%;
 }
+
+#nav-header .nav-wrap {
+    height: auto !important;
+}
+#nav-header .nav-toggle {
+    display: none !important;
+}
+#nav-topbar .nav-wrap {
+    height: auto !important;
+}
+#nav-topbar .nav-toggle {
+    display: none !important;
+}

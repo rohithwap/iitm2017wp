@@ -9,6 +9,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="wp-content/themes/iitm2017/style.css">
+		<link type="text/css" rel="stylesheet" href="wp-content/uploads/maxmegamenu/style.css">
 		<link type="text/css" rel="stylesheet" href="wp-content/themes/iitm2017/css/responsive.css">
 	</head>
 	<?php require_once('functions.php'); ?>
@@ -49,5 +50,12 @@
 				</div>
 			
 			<div>
-				<nav></nav>
+				
+					<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('header-menu') ) : ?>
+	<?php wp_nav_menu( array( 'theme_location' => 'header-menu') ); ?>
+<?php else: ?>
+			<nav><?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?></nav>
+<?php endif; ?>
+					
+					
 			</div>			

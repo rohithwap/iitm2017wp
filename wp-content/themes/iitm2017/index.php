@@ -177,6 +177,7 @@ endwhile;
 							$loop = new WP_Query( $args );
 							while ( $loop->have_posts() ) : $loop->the_post();
 							$city = get_post_meta( get_the_ID(), 'city', true );
+							$reportlink = get_post_meta( get_the_ID(), 'report_link', true );
 							$sdt = get_post_meta( get_the_ID(), 'start_date', true );
 							$start_date = DateTime::createFromFormat('Y-m-d', $sdt);
 							$start_date_format = $start_date->format('d');
@@ -191,8 +192,9 @@ endwhile;
 							if($now > $start_date){
 								$html='
 								<div class="col s12 m3 l3 no-padding">
-									<a class="date-item-booking-open" href="#">Booking Closed</a>
-									<a class="view-report" href="#">View Report</a>
+									<a class="date-item-booking-open" 
+									href="#">Booking Closed</a>
+									<a target="_blank" class="view-report" href='.$reportlink.'>View Report</a>
 								</div>
 								';
 							} else{
