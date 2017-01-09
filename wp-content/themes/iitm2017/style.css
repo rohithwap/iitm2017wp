@@ -958,6 +958,9 @@ input[type=email] {
 	position: relative;
 	margin-left: 5px;
 }
+.blog-link{
+	color: #FFF;
+}
 
 .date-item img {
 	width: 100%;
