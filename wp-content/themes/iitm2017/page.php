@@ -1,11 +1,15 @@
 
 <?php get_header(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+$imageid = get_post_meta( get_the_ID(), 'featured_image', true );
+$imageurl = wp_get_attachment_url($imageid);
+?>
 <!--/Page Content-->
 			<div class="page-inner-content">
-				<img class="page-inner-img" src="<?php echo get_template_directory_uri(); ?>/images/test6.jpg">
+				<img class="page-inner-img" src="<?php echo $imageurl; ?>">
 				<div class="section-heading"><h1><?php the_title(); ?></h1></div>
 				<div class="page-inner-text">
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+					<?php
 						the_content();
 						endwhile; else: ?>
 						<p>Sorry, no posts matched your criteria.</p>
