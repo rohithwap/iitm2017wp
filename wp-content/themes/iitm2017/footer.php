@@ -51,7 +51,7 @@
 			autoPlay: 5000,
 			transitionStyle: "fade",
 			navigation: true, // Show next and prev buttons
-			navigationText: ["<img src='wp-content/themes/iitm2017/images/left.png'>", "<img src='wp-content/themes/iitm2017/images/right.png'>"],
+			navigationText: ["<img src='<?php echo get_template_directory_uri(); ?>/images/left.png'>", "<img src='<?php echo get_template_directory_uri(); ?>/images/right.png'>"],
 			mouseDrag: false,
 			touchDrag: false,
 		});
@@ -70,7 +70,7 @@
 			transitionStyle: "fade",
 			autoPlay: 3000,
 			pagination: false,
-			navigationText: ["<img src='wp-content/themes/iitm2017/images/left.png'>", "<img src='wp-content/themes/iitm2017/images/right.png'>"],
+			navigationText: ["<img src='<?php echo get_template_directory_uri(); ?>/images/left.png'>", "<img src='<?php echo get_template_directory_uri(); ?>/images/right.png'>"],
 			mouseDrag: false,
 			touchDrag: false,
 
@@ -89,7 +89,7 @@
 			navigation: true,
 			pagination: false,
 			autoPlay: 1000,
-			navigationText: ["<img class='blog-nav' src='wp-content/themes/iitm2017/images/left.png'>", "<img class='blog-nav' src='wp-content/themes/iitm2017/images/right.png'>"]
+			navigationText: ["<img class='blog-nav' src='<?php echo get_template_directory_uri(); ?>/images/left.png'>", "<img class='blog-nav' src='<?php echo get_template_directory_uri(); ?>/images/right.png'>"]
 		});
 
 		$(document).ready(function () {

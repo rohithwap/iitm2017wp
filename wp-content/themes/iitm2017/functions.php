@@ -28,22 +28,12 @@ wp_enqueue_style( 'megamenu', get_template_directory_uri() . '../uploads/maxmega
 wp_enqueue_style( 'style', get_stylesheet_uri() );	
 wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css', false, NULL, 'all' );
 
+wp_enqueue_script('jq','https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), false, true);	
 wp_enqueue_script('materialize',get_template_directory_uri() .'/js/materialize.min.js', array('jquery'), false, true);
 wp_enqueue_script('owl',get_template_directory_uri() .'/libs/owl-carousel/owl.carousel.min.js', array('jquery'), false, true);
 wp_enqueue_script('fontawesome','https://use.fontawesome.com/50f7d4f33c.js', array(), false, true);	
 }
 add_action( 'wp_enqueue_scripts', 'add_css_js' );
-
-//Making jQuery to load from Google Library
-function replace_jquery() {
-	if (!is_admin()) {
-		// comment out the next two lines to load the local copy of jQuery
-		wp_deregister_script('jquery');
-		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, '1.11.3');
-		wp_enqueue_script('jquery');
-	}
-}
-add_action('init', 'replace_jquery');
 
 // Enable Widget Areas
 function wpb_widgets_init() {
