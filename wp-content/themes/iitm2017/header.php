@@ -34,8 +34,8 @@
 										<div class="contact-text">
 											+91-80-40834100<br>
 											info@iitmindia.com
-										</div>
-									</div>
+                                        </div>  
+                                    </div>
 								</div>
 							</div>
 						</div>

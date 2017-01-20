@@ -120,6 +120,12 @@ body {
 	color: #FFF;
 }
 
+div.search-option label{
+    position: absolute;
+    left: -9999px;
+        
+}
+
 .top-header {
 	overflow: hidden;
 	border-bottom: 10px solid #ffbb01;
@@ -842,7 +848,7 @@ input[type=email] {
 
 .blog-date {
 	text-align: center;
-	color: #dadada;
+	color: #fff !important;
 	padding: 20px 10px;
 	font-size: 16px;
 }
