@@ -54,14 +54,7 @@
 			navigationText: ["<img src='<?php echo get_template_directory_uri(); ?>/images/left.png'>", "<img src='<?php echo get_template_directory_uri(); ?>/images/right.png'>"],
 			mouseDrag: false,
 			touchDrag: false,
-		});
-		$("#owl-twitter").owlCarousel({
-			singleItem: true,
-			slideSpeed: 300,
-			navigation: false,
-			pagination: false,
-			autoPlay: 5000
-		});
+		});			
 		$("#owl-gallery").owlCarousel({
 			navigation: true, // Show next and prev buttons
 			slideSpeed: 200,
@@ -111,10 +104,12 @@
 				$(".date-item").each(function (i) {
 					$(this).delay((i + 1) * 100).fadeIn();
 				});
-			})
+			})		
+			
 
 
-		})
+		})	
+	  
 	</script>	
 </body>
 

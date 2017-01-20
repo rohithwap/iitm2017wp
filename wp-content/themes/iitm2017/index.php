@@ -62,10 +62,7 @@ endwhile;
 						<h5>IITM Starts Tomorrow</h5>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 					</div>
-					<div class="item">
-						<h5>IITM Starts Tomorrow</h5>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					</div>
+					
 				</div>
 				<!--End Tweet Carousel -->
 			</div>
