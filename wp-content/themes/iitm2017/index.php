@@ -10,9 +10,9 @@
 					<div class="nav-next-cust"></div -->
 				</div>
 				<div id="owl-gallery" class="owl-carousel owl-theme">
-					
 <?php
-$args = array( 'post_type' => 'iitm_slider', 'posts_per_page' => 5 );
+$args = array( 'post_type' => 'iitm_slider',
+ 'posts_per_page' => 5 );
 $loop = new WP_Query( $args );
 while ( $loop->have_posts() ) : $loop->the_post();   
   $imageid = get_post_meta( get_the_ID(), 'slider_image', true );

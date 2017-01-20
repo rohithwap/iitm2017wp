@@ -1,5 +1,5 @@
 <?php
-
+ 
 // Register Custom Content Types
 require_once('includes/register-slider.php');
 require_once('includes/register-quickfact.php');
@@ -19,7 +19,8 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 // Add Styles And Scripts To The Theme
-function add_css_js() {
+function add_css_js()
+  {
 wp_enqueue_style( 'materialize', get_template_directory_uri() . '/css/materialize.min.css', false, NULL, 'all' );
 wp_enqueue_style( 'owl', get_template_directory_uri() . '/libs/owl-carousel/owl.carousel.css', false, NULL, 'all' );
 wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/libs/owl-carousel/owl.theme.css', false, NULL, 'all' );

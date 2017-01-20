@@ -7,7 +7,7 @@ $imageurl = wp_get_attachment_url($imageid);
 <!--/Page Content-->
 			<div class="page-inner-content">
 				<img class="page-inner-img" src="<?php echo $imageurl; ?>">
-				<div class="section-heading"><h1><?php the_title(); ?></h1></div>
+				<div class="section-heading"><h2><?php the_title(); ?></h2></div>
 				<div class="page-inner-text">
 					<?php
 						the_content();
