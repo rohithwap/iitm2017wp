@@ -1,11 +1,13 @@
+/*
+Template Name: Archives
+*/
+
+
 <?php get_header(); ?>
 <!--/Page Content-->
 			<div class="section-heading-blog"><div><h1>IITM Blog</h1></div></div>
 			<div class="page-inner-content">
-                <?php 
-                wp_get_archives('type=monthly'); 
-                echo "Hello";
-                ?>
+               
 				<div class="blog-widget">					
 					<div class="row margin-top-ten">
 						<div class="col s12 m4 l4 single-blog-holder">

@@ -46,22 +46,10 @@ endwhile;
 			</div>
 			<!-- END Gallery ITEMS -->
 
-			<div class="twitter-outer">
-				<div class="twitter-icon-container">
-					<div class="ti">
-						<img src="wp-content/themes/iitm2017/images/tweets.png">
-					</div>
-				</div>
+			<div class="twitter-outer">				
 				<!--Tweet Carousel -->
 				<div id="owl-twitter" class="owl-carousel owl-theme">
-					<div class="item">
-						<h5>IITM Starts Tomorrow</h5>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					</div>
-					<div class="item">
-						<h5>IITM Starts Tomorrow</h5>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					</div>
+					
 					
 				</div>
 				<!--End Tweet Carousel -->

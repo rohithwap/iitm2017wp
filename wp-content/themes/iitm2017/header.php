@@ -20,20 +20,10 @@
 			  '/764349200272874',
 			  'GET',
 			  {"fields":"posts.limit(5)",  "access_token" : "EAAJz4ohejj0BAO5uuKbkimPDVVgrT3kXMSFHZBZAXxfxpZCcSOBkQIsbgtRl1wD8nuZAZBgsw7Ygh81slcKoakXqMrOW30WomKYH0tZC6sWFxd2us11ikNeG8mQIZAl0ISn5ymvXqQSHl5EjREZAmoZBDYV1VtqIz7WZCa3Uf5WLvstgZDZD"},
-			  function(response) {
-				 //console.log(response);
-				 for(var i = 0; i< 5; i++){
-					 var html ='<div class="owl-item"><div class="item"><p>'+response.posts.data[i].message+'</p></div></div>';	
-					 $('#owl-twitter > .owl-wrapper-outer > .owl-wrapper').append(html);
-					 $("#owl-twitter").owlCarousel({
-							singleItem: true,
-							slideSpeed: 300,
-							navigation: false,
-							pagination: false,
-							autoPlay: 5000
-					});
-				 }	
-				  
+			  function(response) {				 
+				 	$.when( fbdata() ).done(function() {
+						   start_fb_carousel();
+					});				  
 			  })  
 			  
 		  };
@@ -74,13 +64,13 @@
 										<div class="contact-text">
 											+91-80-40834100<br>
 											info@iitmindia.com
-<<<<<<< HEAD
+											<?php get_search_form(); ?> 
 										</div>										
 									</div>
-=======
+
                                         </div>  
                                     </div>
->>>>>>> 7c567b08c9733da372ed58ea684f575fa4d88610
+
 								</div>
 							</div>
 						</div>

@@ -17,11 +17,12 @@ h5 {
 
 body {
 	background: #f7f7f7;
+	padding: 2%;
 }
 
 .container-fluid {
 	overflow-y: hidden;
-	padding: 1%;
+	/* padding: 1%; */
 }
 
 .yellow {
@@ -118,6 +119,9 @@ body {
 	text-align: right;
 	font-size: 20px;
 	color: #FFF;
+	background: url(images/art.png);
+    background-size: initial;
+    background-position-y: -35px;
 }
 
 div.search-option label{
@@ -141,7 +145,7 @@ div.search-option label{
 	position: relative;
 	min-height: 65vh;
 	overflow: hidden;
-	background: #000;
+	background: #FFF;
 }
 
 .gal-image {
@@ -158,10 +162,10 @@ div.search-option label{
 .gal-image-text {
 	position: absolute;
 	bottom: 0;
-	right: 0;
-	width: 30%;
-	background: #000;
-	height: 35%;
+	left: 0;
+	width: 69%;
+	background: rgba(255, 0, 151, 0.81);
+	height: 28%;
 	color: #FFF;
 	padding: 20px 30px;
 }
@@ -174,11 +178,12 @@ nav {
 	position: absolute;
 	right: 0;
 	top: 0;
-	height: 60%;
+	height: 100%;
 	width: 30%;
 	background: #04b6d2;
-	padding: 100px 30px;
+	/* padding: 100px 30px; */
 	z-index: 1;
+	background-size: cover !important;
 }
 
 .twitter-icon-container {
@@ -203,6 +208,15 @@ nav {
 	background-repeat: no-repeat;
 }
 
+#owl-twitter{
+	position: absolute;
+    bottom: 0px;
+}
+#owl-twitter p{
+	color: #FFF;
+	background: rgb(4, 182, 210);
+    padding: 10px
+}
 .item h5 {
 	color: #FFF;
 	font-weight: bold;
@@ -828,6 +842,9 @@ input[type=email] {
 .blog-widget {	
 	display: inline-block;
 }
+.single-blog-holder{
+	min-height: 450px;	
+}
 
 .row .single-blog-holder {
 	padding: 0px !important;
@@ -987,4 +1004,15 @@ input[type=email] {
 }
 #nav-topbar .nav-toggle {
     display: none !important;
+}
+.search-form-form{
+	position: relative;
+}
+.search-form{
+	border-bottom: 3px solid #000 !important;
+    width: 70% !important;
+    margin: 0px !important;
+    float: left !important;
+	position: absolute;
+    right: 0;	
 }

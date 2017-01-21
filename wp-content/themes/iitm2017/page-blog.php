@@ -1,9 +1,12 @@
+
+/* Template Name: All Posts*/
+
 <?php get_header(); ?>
 <!--/Page Content-->
 			<div class="section-heading-blog"><div><h1>IITM Blog</h1></div></div>
 			<div class="page-inner-content">
 				<div class="blog-widget">					
-					<div class="row margin-top-ten">
+					<div class="row">
                          <?php
 							$args = array( 'post_type' => 'post');
 							$loop = new WP_Query( $args );
@@ -15,10 +18,10 @@
 							<div class="blog-border">
 							<div class="blog-img-holder">
 								<img src="<?php echo $imageurl; ?>">
-								<div class="blog-image-overlay"><i class="fa fa-search"></i></div>
+								<div class="blog-image-overlay"><a href="<?php echo the_permalink(); ?>"><i class="fa fa-search"></i></a></div>
 							</div>
 							<div class="blog-date"><?php the_time('F jS, Y g:i a'); ?></div>
-							<div class="blog-title"><h5><?php echo $post->post_title; ?></h5>
+							<div class="blog-title"><a href="<?php echo the_permalink(); ?>"><h5><?php echo $post->post_title; ?></h5></a>
 							<p><?php echo $post->post_excerpt; ?></p></div>
 							</div>                        
 						</div>

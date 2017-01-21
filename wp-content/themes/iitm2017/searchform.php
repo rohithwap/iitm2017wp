@@ -1,6 +1,4 @@
-<form role="search" method="get" id="seachform" action="<?php echo home_url('/'); ?>">
-    <div><label class="screen-reader-text" for="s">Seach For:</label>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="Search" />
-    </div>
+<form action="/" method="get" class="search-form-form">    
+    <input type="text" name="s" id="search" class="search-form" value="<?php the_search_query(); ?>" />
+    <input type="image" alt="Search" src="<?php bloginfo( 'template_url' ); ?>/images/search.png" />
 </form>

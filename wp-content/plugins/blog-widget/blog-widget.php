@@ -50,7 +50,6 @@ $title = get_the_title();
 $link = get_the_permalink();	
 
 echo '
-
 			<div class="col s12 m4 l4 single-blog-holder">
 				<div class="blog-border">
 				<div class="blog-img-holder">
