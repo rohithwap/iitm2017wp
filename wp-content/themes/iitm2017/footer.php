@@ -34,6 +34,16 @@
 			items: 6,
 			slideBy: 1,
 		});
+        $("#owl-partners-fullpage").owlCarousel({
+			singleItem: false,
+			slideSpeed: 300,
+			pagination: false,
+			autoPlay: 1000,
+			transitionStyle: "fade",
+			navigation: false, // Show next and prev buttons
+			items: 6,
+			slideBy: 1,
+		});
 		$("#owl-reports").owlCarousel({
 			singleItem: false,
 			slideSpeed: 300,
