@@ -1,6 +1,7 @@
 
+<?php
 /* Template Name: All Posts*/
-
+?>
 <?php get_header(); ?>
 <!--/Page Content-->
 			<div class="section-heading-blog"><div><h1>IITM Blog</h1></div></div>

@@ -34,7 +34,7 @@ if ( ! empty( $title ) )
 // This is where you run the code and display the output
 
 
-$args = array( 'post_type' => 'partners');
+$args = array( 'post_type' => 'partners','posts_per_page' => 50,);
 $loop = new WP_Query( $args );
 
 

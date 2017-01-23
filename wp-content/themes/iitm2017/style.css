@@ -164,7 +164,7 @@ div.search-option label{
 	bottom: 0;
 	left: 0;
 	width: 69%;
-	background: rgba(255, 0, 151, 0.81);
+	background: rgba(255, 187, 1, 0.81)!important;
 	height: 28%;
 	color: #FFF;
 	padding: 20px 30px;
@@ -1015,4 +1015,12 @@ input[type=email] {
     float: left !important;
 	position: absolute;
     right: 0;	
+}
+.su-spoiler-title{
+    background: #008ce4;
+    color: #d8d8d8;
+}
+.su-spoiler-content su-clearfix{
+   background: #cecece !important;
+    color: black !important;
 }
