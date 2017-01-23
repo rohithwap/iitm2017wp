@@ -21,9 +21,18 @@
 			  'GET',
 			  {"fields":"posts.limit(5)",  "access_token" : "EAAJz4ohejj0BAO5uuKbkimPDVVgrT3kXMSFHZBZAXxfxpZCcSOBkQIsbgtRl1wD8nuZAZBgsw7Ygh81slcKoakXqMrOW30WomKYH0tZC6sWFxd2us11ikNeG8mQIZAl0ISn5ymvXqQSHl5EjREZAmoZBDYV1VtqIz7WZCa3Uf5WLvstgZDZD"},
 			  function(response) {				 
-				 	$.when( fbdata() ).done(function() {
-						   start_fb_carousel();
-					});				  
+				 for(var i = 0; i< 5; i++){
+					 var html ='<div class="owl-item"><div class="item"><p>'+response.posts.data[i].message+'</p></div></div>';	
+					 $('#owl-twitter').append(html);
+					 $("#owl-twitter").owlCarousel({
+							singleItem: true,
+							slideSpeed: 300,
+							navigation: false,
+							pagination: true,
+							autoPlay: 5000
+					});
+				 }	
+				  
 			  })  
 			  
 		  };
